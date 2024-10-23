@@ -1,5 +1,4 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
-import { NavigationContainer } from "@react-navigation/native"
 import Home from "../home/home";
 import Calendar from "../calendar/calendar";
 import Profile from "../profile/profile";
@@ -9,7 +8,7 @@ import { Image, Text } from "react-native";
 const Tab = createBottomTabNavigator();
 
 function Main() {
-    return <NavigationContainer>
+    return <>
         <Tab.Navigator>
             <Tab.Screen name="Home" component={Home} options={
                 {
@@ -18,6 +17,8 @@ function Main() {
                         return <Image source={icon.logo} style={{ width: 125, height: 29 }} />
                     },
                     tabBarShowLabel: false,
+                    unmountOnBlur: true,
+
                     tabBarIcon: ({ focused }) => {
                         return <Image source={icon.home} style={{
                             width: 25, height: 25,
@@ -34,6 +35,7 @@ function Main() {
                             return <Text>Minhas Reservas</Text>
                         },
                         tabBarShowLabel: false,
+                        unmountOnBlur: true,
                         tabBarIcon: ({ focused }) => {
                             return <Image source={icon.calendar} style={{
                                 width: 25, height: 25,
@@ -49,6 +51,8 @@ function Main() {
                         return <Image source={icon.logo} style={{ width: 125, height: 29 }} />
                     },
                     tabBarShowLabel: false,
+                    unmountOnBlur: true,
+
                     tabBarIcon: ({ focused }) => {
                         return <Image source={icon.profile} style={{
                             width: 25, height: 25,
@@ -58,7 +62,8 @@ function Main() {
                 }
             } />
         </Tab.Navigator>
-    </NavigationContainer>
+        </>
+ 
 }
 
 export default Main

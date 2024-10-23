@@ -4,6 +4,9 @@ import icon from "../../constants/icon"
 import Button from "../button/button"
 
 function Appointment(props) {
+
+    const dt =  new Date(props.booking_date + "T" + props.booking_hour)
+   
     return <View style={styles.appointment}>
         <Text style={styles.name}>{props.service} - {props.doctor}</Text>
         <Text style={styles.specialty}>{props.specialty}</Text>
@@ -12,15 +15,15 @@ function Appointment(props) {
             <View style={styles.containerBooking}>
                 <View style={styles.booking}>
                     <Image source={icon.calendar} style={styles.icon} />
-                    <Text style={styles.bookingDate}>10/10/2021</Text>
+                    <Text style={styles.bookingDate}>{dt.toLocaleDateString('pt-BR')}</Text>
                 </View>
                 <View style={styles.booking}>
                     <Image source={icon.clock} style={styles.icon} />
-                    <Text style={styles.bookingHour}>10:00h</Text>
+                    <Text style={styles.bookingHour}>{props.booking_hour}h</Text>
                 </View>
             </View>
             <View style={styles.containerButton}>
-                <Button text="Cancelar reserva" theme="danger" />
+                <Button text="Cancelar reserva" theme="danger" onPress={()=> props.onPress(props.id_appointment)} />
             </View>
         </View>
     </View>

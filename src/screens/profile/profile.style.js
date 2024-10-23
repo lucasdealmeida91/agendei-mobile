@@ -3,7 +3,8 @@ export const styles = {
     container: {
         backgroundColor: COLORS.white,
         flex: 1,
-        paddingTop: 12
+        paddingTop: 12,
+        justifyContent: "space-between"
     },
     item: {
         borderWidth: 1,
